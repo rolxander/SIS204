@@ -1,0 +1,86 @@
+working directory	 // 	Trabajar con los archibos
+
+staging area		// 	Preparar tus archibos para crear un repositorio
+
+repository		// 	Creacion de repositorio
+
+
+comandos
+
+git init // crear proyecto
+git add <file> para pasar tus proyectos
+git status 
+git commint
+git push
+git pull // traes los cambios de los otros desarroladores
+git clone
+git checkout -- <file> index.html
+git diff <file> // te muestra los cambios
+git branch // te muestra las verciones
+git branch "nombre_rama" te crea una rama 
+git checkout   te mueve a la rama
+git add . // este agrega todas las carpetas del entrono de trabajo
+.gitignore // colocas los archibos que van a ser ignorados por git
+
+git remote add origin "url" para desir donde se creara el repositorio.
+git push -u origin master
+git config remote.origin.url // para la configuracion de url
+git config remote.origin.url
+
+Para las personas que se están iniciando en GIT, les presento una serie de comandos usados comúnmente.
+
+git help
+
+Muestra una lista con los comandos más utilizados en GIT.
+
+git init
+
+Podemos ejecutar ese comando para crear localmente un repositorio con GIT y así utilizar todo el funcionamiento que GIT ofrece.  Basta con estar ubicados dentro de la carpeta donde tenemos nuestro proyecto y ejecutar el comando.  Cuando agreguemos archivos y un commit, se va a crear el branch master por defecto.
+
+git add + path
+
+Agrega al repositorio los archivos que indiquemos.
+
+git add -A
+
+Agrega al repositorio TODOS los archivos y carpetas que estén en nuestro proyecto, los cuales GIT no está siguiendo.
+
+git commit -m "mensaje" + archivos
+
+Hace commit a los archivos que indiquemos, de esta manera quedan guardados nuestras modificaciones.
+
+git commit -am "mensaje"
+
+Hace commit de los archivos que han sido modificados y GIT los está siguiendo.
+
+git checkout -b NombreDeBranch
+
+Crea un nuevo branch y automaticamente GIT se cambia al branch creado, clonando el branch desde donde ejecutamos el comando.
+
+git branch
+
+Nos muestra una lista de los branches que existen en nuestro repositorio.
+
+git checkout NombreDeBranch
+
+Sirve para moverse entre branches, en este caso vamos al branch que indicamos en el comando.
+
+git merge NombreDeBranch
+
+Hace un merge entre dos branches, en este caso la dirección del merge sería entre el branch que indiquemos en el comando, y el branch donde estémos ubicados.
+
+git status
+
+Nos indica el estado del repositorio, por ejemplo cuales están modificados, cuales no están siendo seguidos por GIT, entre otras características.
+
+git clone URL/name.git NombreProyecto
+
+Clona un proyecto de git en la carpeta NombreProyecto.
+
+git push origin NombreDeBranch
+
+Luego de que hicimos un git commit, si estamos trabajando remotamente, este comando va a subir los archivos al repositorio remoto, específicamente al branch que indiquemos.
+
+git pull origin NombreDeBranch
+
+Hace una actualización en nuestro branch local, desde un branch remoto que indicamos en el comando.
