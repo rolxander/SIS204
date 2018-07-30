@@ -18,7 +18,8 @@ git checkout -- <file> index.html
 git diff <file> // te muestra los cambios
 git branch // te muestra las verciones
 git branch "nombre_rama" te crea una rama 
-git checkout   te mueve a la rama
+git checkout   CodigoCola/cola.cpp
+
 git add . // este agrega todas las carpetas del entrono de trabajo
 .gitignore // colocas los archibos que van a ser ignorados por git
 
