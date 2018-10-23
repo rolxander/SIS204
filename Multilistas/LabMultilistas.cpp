@@ -26,7 +26,14 @@ void mostrar_estudiantes_Materia(string);
 int main(int argc, char *argv[]) {
 	iniciar();
 	insertar_Materia_delante("sis100","Computacion I",8);
+	insertar_Materia_delante("sis204","Estructura de datos",8);
 	insertar_Materia_delante("sis101","Metodologia de la prigramacion I",8);
+	insertar_estudiante("35-3562","jose choque","sin direccion",'M',"sis100");
+	insertar_estudiante("35-3562","jose choque","sin direccion",'M',"sis101");
+	insertar_estudiante("111-255","gael choque","sin direccion",'M',"sis100");
+	insertar_estudiante("111-255","gael choque","sin direccion",'M',"sis101");
+	insertar_estudiante("35-3562","jose choque","sin direccion",'M',"sis204");
+	insertar_estudiante("111-255","gael choque","sin direccion",'M',"sis204");
 	int opcion = 0;
 	string codigo,nombre,detalle,codigo_E,nombre_E,direccion_E;
 	char sexo_E;
@@ -145,7 +152,7 @@ void mostra_Materia(string codigo)
 	{   cout<<"\n_____________________________________________________________\n";
 		cout<<"\nSigla : "<<p->codigo;
 		cout<<"\nMateria : "<<p->descripcion;
-		cout<<"\nCantidad Horas : "<<p->cantidad;
+		cout<<"\nCantidad Horas : "<<p->cantidad<<endl;
 	}
 }
 
@@ -197,10 +204,11 @@ void mostrar_estudiantes_Materia(string codigo)
 		}else{
 			while(q!=NULL)
 			{
-				cout<<endl<<contador<<") "<<q->nombre<<endl;
+				cout<<contador<<") "<<q->nombre<<endl;
 				q = q->siguiente;
 				contador++;
 			}
+			cout<<"El total de alumnos registrados en la materia es : "<<contador-1<<endl; 
 		}
 	}	
 }
