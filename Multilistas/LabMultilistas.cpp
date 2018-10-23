@@ -21,17 +21,23 @@ void insertar_Materia_delante(string,string,int);
 nodoasig *buscar_Materia(string);
 void mostra_Materia(string);
 void insertar_estudiante(string,string,string,char,string);
+void mostrar_estudiantes_Materia(string);
 // Inicio main
 int main(int argc, char *argv[]) {
 	iniciar();
+	insertar_Materia_delante("sis100","Computacion I",8);
+	insertar_Materia_delante("sis101","Metodologia de la prigramacion I",8);
 	int opcion = 0;
-	string codigo,nombre,detalle;
+	string codigo,nombre,detalle,codigo_E,nombre_E,direccion_E;
+	char sexo_E;
 	int cantidad;
 	do{
 		cout<<endl<<"Bienvenido a Nuestra aplicacion de multilistas"<<endl;
 		cout<<"Elige una opcion de nuestro menú"<<endl;
 		cout<<endl<<"1 )Insertar Materia por delante"<<endl;
 		cout<<"2) Busscar Materia"<<endl;
+		cout<<"3) Agregar estudiante a una materia"<<endl;
+		cout<<"4) Mostrar lista de estudiantes de una materia espesifica"<<endl;
 		cin>>opcion;
 		switch(opcion)
 		{
@@ -43,11 +49,27 @@ int main(int argc, char *argv[]) {
 		case 2 :cout<<endl<<"Introdusca la sigl de la materia  buscar"<<endl;
 				cin>>codigo;
 				mostra_Materia(codigo);break;
+		case 3: cout<<endl<<"Inserte la sigla de la materia"<<endl;
+				cin>>codigo;
+				cout<<endl<<"Inserte el nombre estudiante"<<endl;
+				cin>>nombre_E;
+				cout<<endl<<"Inserte direccion del estudiante"<<endl;
+				cin>>direccion_E;
+				cout<<endl<<"Inserte Carnet Universitario"<<endl;
+				cin>>codigo_E;
+				cout<<"Inserte el sexo del estudiante M o F"<<endl;
+				cin>>sexo_E;insertar_estudiante(codigo_E,nombre_E,direccion_E,sexo_E,codigo);break;
+		case 4: cout<<endl<<"Introduce la sigla de la asignatura"<<endl;
+				cin>>codigo;
+				mostrar_estudiantes_Materia(codigo);break;
+				
 		}
-	}
+		system("pause");
+		system("cls");
+	}		
 	while(opcion!=0);
-	insertar_Materia_delante("sis100","Computacion I",8);
-	insertar_Materia_delante("sis101","Metodologia de la prigramacion I",8);
+
+
 	//mostra_Materia("sis100");
 	//mostra_Materia("sis101");	
 	return 0;
@@ -127,4 +149,58 @@ void mostra_Materia(string codigo)
 	}
 }
 
-void insertar_estudiante(string codigo,string nombre,string direccion,char sexo,string codigo_M){}
+void insertar_estudiante(string codigo,string nombre,string direccion,char sexo,string codigo_M)
+{
+	nodoasig *p = buscar_Materia(codigo_M);
+	nodoestudiante *q = new nodoestudiante;
+	nodoestudiante *r;
+	q->codigo = codigo;
+	q->nombre = nombre;
+	q->direccion = direccion;
+	q->sexo = sexo;
+	q->siguiente= NULL;
+	if(p->pestudiante == NULL)
+	{
+		p->pestudiante = q;
+	}else
+	{
+		r = p->pestudiante;
+		while(r->siguiente!=NULL)
+		{
+			r = r->siguiente;
+		}
+		
+		if(r==NULL)
+		{
+			cout<<endl<<"Aqui jamas deberia entrar"<<endl;
+		}else
+		{
+			r->siguiente=q;
+		}
+	}
+}
+
+void mostrar_estudiantes_Materia(string codigo)
+{
+	nodoasig *p = buscar_Materia(codigo);
+	nodoestudiante *q = p->pestudiante;
+	if(p==NULL)
+	{
+		cout<<endl<<"La materia no esta registrada"<<endl;
+	}
+	else{
+		cout<<endl<<"Lista de alumnos "<<codigo<<endl;
+		int contador = 1;
+		if(q==NULL)
+		{
+			cout<<endl<<"No se registraron alumnos en la asignatura"<<endl;
+		}else{
+			while(q!=NULL)
+			{
+				cout<<endl<<contador<<") "<<q->nombre<<endl;
+				q = q->siguiente;
+				contador++;
+			}
+		}
+	}	
+}
